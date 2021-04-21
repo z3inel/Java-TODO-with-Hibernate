@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>TODO</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="/font-face.css" rel="stylesheet" media="all">
+    <link href="/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/animate.css" rel="stylesheet" media="all">
+    <link href="/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/slick.css" rel="stylesheet" media="all">
+    <link href="/select2.min.css" rel="stylesheet" media="all">
+    <link href="/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                    <img src="logo.png" alt="Spring" width="250" height="250"/>
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a href="/">
+                                <i class="fas fa-calendar-alt"></i>TODO</a>
+                        </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            TODO based on Spring coded on Netbeans 
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- END HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-9">
+                            </div>
+                            <div class="col-lg-3">
+                            </div>
+                        </div>
+                        </div>
+
+
+                     <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE -->
+
+
+
+
+
+                                <h3 class="title-5 m-b-35">Todo list</h3>
+
+                                   <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h3 class="text-center title-2">Add task</h3>
+                                        </div>
+                                        <hr>
+                                        <form action="/add" method="POST" novalidate="novalidate">
+                                            <div class="form-group">
+                                                <label for="cc-payment" name="todo_name" class="control-label mb-1">Name of task</label>
+                                                <input id="cc-pament" name="todo_name" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="Do something!">
+                                            </div>
+                                            <div>
+                                                <button id="payment-button" type="submit" class="btn btn-success btn-block">
+                                                    <span id="payment-button-amount">Add</span>
+                                                    <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+                                <div class="table-data__tool">
+                                </div>
+
+
+                                <div class="table-responsive table-responsive-data2" >
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                </th>
+                                                <th>ᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠnameᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠ</th>
+                                                <th>ᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠAdded Dateᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠ</th>
+                                                <th>ᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                            <tr class="tr-shadow" th:each="task : ${tasks}" >
+                                                <td>
+                                                 <label class="au-checkbox">
+                                                            <input type="checkbox" checked="checked" disabled>
+                                                            <span class="au-checkmark"></span>
+                                                </label>
+                                                </td>
+                                                <td th:text="${task.getTask_name()}"></td>
+                                                <td th:text="${task.getTask_date()}"></td>
+                                                
+                                                <td th:each="dl : ${deadlineisup}" th:switch="${dl}">
+                                                    <span th:case="'true'" class="status--process">You still can do it!</span>
+                                                    <span th:case="'false'" class="status--denied">Better luck next time!</span>
+
+                                                     
+
+                                                </td>
+                                                
+                                                
+                                                
+                                                <td>
+                                          <div class="table-data-feature">
+                                        <button class="item" data-placement="top" title="Go to editor" data-toggle="modal" data-target="#mediumModal">
+                                        <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                         <form th:method="DELETE" th:action="@{/tasks/{id}(id=${task.getId()})}" th:object="${task}" id="deletemethod"> 
+                                                
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" >
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                         </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+                                            <tr class="spacer"></tr>
+                                        
+                                            
+                                            
+                                            
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END DATA TABLE sdsd -->
+                            </div>
+                        </div>
+                        <div class="row m-t-30">
+                            <div class="col-md-12">
+                               
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>SpringBoot + NetBeans. 2021</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="multimodal">
+            <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document" th:each="task : ${tasks}">
+                    <div class="modal-content">
+                    <div class="card" >
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h3 class="text-center title-2">Edit</h3>
+                                        </div>
+                                        <hr> 
+                                        <form th:method="PATCH" th:action="@{/tasks/{id}(id=${task.getId()})}" th:object="${task}" novalidate="novalidate" > 
+                                            <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Edit task</label>
+                                                <input id="cc-pament" name="todo_name" type="text" class="form-control" aria-required="true" aria-invalid="false" th:value="${task.getTask_name()}">
+                                            </div>
+                                            <div>
+                                                <button id="payment-button" type="submit" class="btn btn-info btn-block">
+                                                    <span id="payment-button-amount">Edit</span>
+                                                    <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="/popper.min.js"></script>
+    <script src="/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="/slick.min.js">
+    </script>
+    <script src="/wow.min.js"></script>
+    <script src="/animsition.min.js"></script>
+    <script src="/bootstrap-progressbar.min.js">
+    </script>
+    <script src="/jquery.waypoints.min.js"></script>
+    <script src="/jquery.counterup.min.js">
+    </script>
+    <script src="/circle-progress.min.js"></script>
+    <script src="/perfect-scrollbar.js"></script>
+    <script src="/Chart.bundle.min.js"></script>
+    <script src="/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->
